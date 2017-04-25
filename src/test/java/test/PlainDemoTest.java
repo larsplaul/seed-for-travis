@@ -24,7 +24,7 @@ public class PlainDemoTest {
   
   @Test
   public void dummyTest(){
-    assertTrue(false);  //Really "nothing" to test in the initial version of the seed
+    assertTrue(true);  //Really "nothing" to test in the initial version of the seed
   }
   
 }

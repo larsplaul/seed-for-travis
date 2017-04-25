@@ -5,6 +5,9 @@ cache:
   directories:
     - $HOME/.m2
 
+notifications:
+  email:
+    - lam@cphbusiness.dk
 script:
   - mvn verify
 
