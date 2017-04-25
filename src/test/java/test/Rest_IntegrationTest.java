@@ -11,6 +11,5 @@ public class Rest_IntegrationTest extends InitialSeedRestMockDB_IntegrationTest 
       PU.setPU_Name("pu_memorydb_mock");
     }
     utils.makeTestUsers.main(null);
-
   }
 }
