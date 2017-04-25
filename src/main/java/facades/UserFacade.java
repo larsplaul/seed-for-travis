@@ -15,7 +15,7 @@ public class UserFacade implements IUserFacade {
   EntityManagerFactory emf;
 
   public UserFacade(EntityManagerFactory emf) {
-    this.emf = emf;   
+    this.emf = emf;
   }
 
   private EntityManager getEntityManager() {
@@ -34,10 +34,13 @@ public class UserFacade implements IUserFacade {
 
   /*
   Return the Roles if users could be authenticated, otherwise null
-   */ 
+   */
   @Override
   public List<String> authenticateUser(String userName, String password) {
     IUser user = getUserByUserId(userName);
+    if (user == null) {
+      return null;
+    }
     boolean passwordOK = false;
     try {
       passwordOK = PasswordStorage.verifyPassword(password, user.getPassword());
@@ -47,4 +50,21 @@ public class UserFacade implements IUserFacade {
     return user != null && passwordOK ? user.getRolesAsStrings() : null;
   }
 
+  @Override
+  public IUser addUser(String userName, String password) {
+    EntityManager em = getEntityManager();
+    try {
+      User user = new User(userName, password);
+      em.getTransaction().begin();
+      em.persist(user);
+      em.getTransaction().commit();
+      return user;
+
+    } catch (PasswordStorage.CannotPerformOperationException ex) {
+      Logger.getLogger(UserFacade.class.getName()).log(Level.SEVERE, null, ex);
+      return null;
+    } finally {
+      em.close();
+    }
+  }
 }
