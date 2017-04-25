@@ -2,7 +2,7 @@ package test;
 
 import entity.PU;
 
-public class Rest_IntegrationTest extends InitialSeedRestMockDB_IntegrationTest {
+public class Rest_IntegrationTest {//extends RestUser_MockDB_IntegrationTest {
 
   public void setupUsersInDB() {
     if (System.getenv("TRAVIS") != null) {
