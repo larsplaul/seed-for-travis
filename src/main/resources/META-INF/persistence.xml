@@ -4,7 +4,7 @@
   <!-- 
   Change this PU to point to your own local MySql database
   -->
- <persistence-unit name="pu_development" transaction-type="RESOURCE_LOCAL">
+  <persistence-unit name="pu_development" transaction-type="RESOURCE_LOCAL">
     <provider>org.eclipse.persistence.jpa.PersistenceProvider</provider>
     <class>entity.Role</class>
     <class>entity.User</class>
@@ -19,7 +19,7 @@
     </properties>
   </persistence-unit>
  
- <!-- 
+  <!-- 
   This is used to mock away the real database for Unit Tests that involve database access
   -->
   <persistence-unit name="pu_memorydb_mock" transaction-type="RESOURCE_LOCAL">
@@ -36,10 +36,11 @@
     </properties>
   </persistence-unit>
   
-   <!--Use this PU to execute tests on a real MySQL instance when tests are executed on Travis-CI -->
+  <!--Use this PU to execute tests on a real MySQL instance when tests are executed on Travis-CI -->
   <persistence-unit name="pu_mySql_travis_Integration" transaction-type="RESOURCE_LOCAL">
     <provider>org.eclipse.persistence.jpa.PersistenceProvider</provider>
-    <class>exercise.realdatabase.SystemUser</class>
+    <class>entity.Role</class>
+    <class>entity.User</class>
     <exclude-unlisted-classes>true</exclude-unlisted-classes>
     <properties>
       <property name="javax.persistence.jdbc.url" value="jdbc:mysql://localhost:3306/usersDB?zeroDateTimeBehavior=convertToNull"/>
