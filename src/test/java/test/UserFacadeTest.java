@@ -30,7 +30,6 @@ public class UserFacadeTest {
   @Test
   public void testGetExsistingUserById() {
     IUser user = facade.getUserByUserId("user");
-    System.out.println(user.getPassword());
     assertEquals("user", user.getUserName());
   }
   
