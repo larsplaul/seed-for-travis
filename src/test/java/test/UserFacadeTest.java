@@ -42,7 +42,7 @@ public class UserFacadeTest {
   @Test
   public void testAuthenticateUserOK() {
     List<String> result = facade.authenticateUser("user", "test");
-    assertEquals("User should have one role",10, result.size());
+    assertEquals("User should have one role",1, result.size());
   }
   
   @Test
